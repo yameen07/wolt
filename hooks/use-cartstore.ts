@@ -1,8 +1,8 @@
 import type { Dish } from "@/data/restaurant_menu";
 import type { Restaurant } from "@/data/restaurants";
-// import zustandStorage from '@/utils/zustandStorage';
+import zustandStorage from "@/utils/zustandStorage";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 export interface CartItem {
   dish: Dish;
@@ -133,7 +133,7 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: "cart",
-      // storage: createJSONStorage(() => zustandStorage),
+      storage: createJSONStorage(() => zustandStorage),
     }
   )
 );
